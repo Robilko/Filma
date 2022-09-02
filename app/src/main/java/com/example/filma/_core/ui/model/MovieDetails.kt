@@ -7,7 +7,7 @@ data class MovieDetails(
     val fullTitle: String,
     val type: String,
     val year: String,
-    val image: String?,
+    val imageUrl: String?,
     val releaseDate: String,
     val runtimeMins: String,
     val runtimeStr: String,

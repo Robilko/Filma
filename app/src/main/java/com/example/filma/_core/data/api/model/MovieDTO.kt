@@ -8,7 +8,7 @@ data class MovieDTO(
     @SerializedName("title")
     val title: String,
     @SerializedName("image")
-    val image: String?,
+    val imageUrl: String?,
     @SerializedName("imDbRating")
     val imDbRating: String
 )

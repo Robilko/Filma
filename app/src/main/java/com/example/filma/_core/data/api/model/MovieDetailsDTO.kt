@@ -16,7 +16,7 @@ data class MovieDetailsDTO(
     @SerializedName("year")
     val year: String,
     @SerializedName("image")
-    val image: String?,
+    val imageUrl: String?,
     @SerializedName("releaseDate")
     val releaseDate: String,
     @SerializedName("runtimeMins")

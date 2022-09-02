@@ -15,7 +15,7 @@ object MovieDtoToUiMapper {
             Movie(
                 id = movieDTO.id,
                 title = movieDTO.title,
-                image = movieDTO.image,
+                imageUrl = movieDTO.imageUrl,
                 imDbRating = movieDTO.imDbRating
             )
         }
@@ -33,7 +33,7 @@ object MovieDetailsDtoToUiMapper {
             fullTitle = movieDetails.fullTitle,
             type = movieDetails.type,
             year = movieDetails.year,
-            image = movieDetails.image,
+            imageUrl = movieDetails.imageUrl,
             releaseDate = movieDetails.releaseDate,
             runtimeMins = movieDetails.runtimeMins,
             runtimeStr = movieDetails.runtimeStr,
