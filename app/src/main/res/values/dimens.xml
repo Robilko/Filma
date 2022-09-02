@@ -1,3 +1,10 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="empty_data_image_size">100dp</dimen>
+    <dimen name="recycler_item_height">150dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="movie_image_width_size">100dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="recycler_item_movie_title_size">30sp</dimen>
+    <dimen name="recycler_item_imdbRating_text_size">20sp</dimen>
 </resources>

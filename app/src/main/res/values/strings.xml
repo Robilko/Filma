@@ -12,4 +12,7 @@
     <string name="search">Search</string>
     <string name="movies_list">List of movies</string>
     <string name="movie_details">Movie details</string>
+    <string name="example_movie_title">Inception</string>
+    <string name="recycler_item_rating_header">Rating:</string>
+    <string name="example_rating">7.5</string>
 </resources>
