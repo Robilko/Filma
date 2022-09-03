@@ -15,4 +15,7 @@
     <string name="example_movie_title">Inception</string>
     <string name="recycler_item_rating_header">Rating:</string>
     <string name="example_rating">7.5</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="retry">Try again</string>
+    <string name="close">Close</string>
 </resources>

@@ -36,7 +36,7 @@ data class MovieDetailsDTO(
     @SerializedName("genres")
     val genres: String,
     @SerializedName("imDbRating")
-    val imDbRating: String,
+    val imDbRating: String?,
     @SerializedName("keywords")
     val keywords: String,
     @SerializedName("keywordList")

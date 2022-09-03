@@ -16,7 +16,11 @@ object MovieDtoToUiMapper {
                 id = movieDTO.id,
                 title = movieDTO.title,
                 imageUrl = movieDTO.imageUrl,
-                imDbRating = movieDTO.imDbRating
+                imDbRating = if (movieDTO.imDbRating.isNullOrEmpty()) {
+                    " - "
+                } else {
+                    movieDTO.imDbRating
+                }
             )
         }
     }
@@ -43,7 +47,11 @@ object MovieDetailsDtoToUiMapper {
             directors = movieDetails.directors,
             actorList = ActorDtoToUiMapper(movieDetails.actorList),
             genres = movieDetails.genres,
-            imDbRating = movieDetails.imDbRating,
+            imDbRating = if (movieDetails.imDbRating.isNullOrEmpty()) {
+                " - "
+            } else {
+                movieDetails.imDbRating
+            },
             keywords = movieDetails.keywords,
             keywordList = movieDetails.keywordList,
             similars = MovieDtoToUiMapper(movieDetails.similars)

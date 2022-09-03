@@ -10,5 +10,5 @@ data class MovieDTO(
     @SerializedName("image")
     val imageUrl: String?,
     @SerializedName("imDbRating")
-    val imDbRating: String
+    val imDbRating: String?
 )

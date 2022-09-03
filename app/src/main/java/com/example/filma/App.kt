@@ -14,7 +14,6 @@ class App : Application() {
         super.onCreate()
         initKoin()
         instance = this
-
     }
 
     private fun initKoin() {

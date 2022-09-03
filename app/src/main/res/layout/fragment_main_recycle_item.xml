@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/movie_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_8"
             android:textIsSelectable="true"
@@ -52,11 +52,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_4"
+            android:text="@string/recycler_item_rating_header"
             android:textSize="@dimen/recycler_item_imdbRating_text_size"
             app:layout_constraintBottom_toBottomOf="@id/imDbRating"
             app:layout_constraintEnd_toStartOf="@id/imDbRating"
-            app:layout_constraintTop_toTopOf="@id/imDbRating"
-            tools:text="@string/recycler_item_rating_header" />
+            app:layout_constraintTop_toTopOf="@id/imDbRating" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="50dp"
