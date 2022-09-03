@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="recycle_item_background">#F6F2F2</color>
+    <color name="content_background">#F6F2F2</color>
+    <color name="details_parameters_text_color">#FF000000</color>
 </resources>

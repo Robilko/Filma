@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="recycle_item_background">#2B2B2B</color>
+    <color name="content_background">#2B2B2B</color>
+    <color name="details_parameters_text_color">#FFFFFFFF</color>
 </resources>

@@ -24,11 +24,11 @@ data class MovieDetailsDTO(
     @SerializedName("runtimeStr")
     val runtimeStr: String,
     @SerializedName("plot")
-    val description: String,
+    val plot: String,
     @SerializedName("plotLocal")
-    val descriptionLocal: String,
+    val plotLocal: String,
     @SerializedName("plotLocalIsRtl")
-    val descriptionLocalIsRtl: Boolean,
+    val plotLocalIsRtl: Boolean,
     @SerializedName("directors")
     val directors: String,
     @SerializedName("actorList")

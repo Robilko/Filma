@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/recycle_item_background">
+        android:background="@color/content_background">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/movie_image"
@@ -52,14 +52,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_4"
-            android:text="@string/recycler_item_rating_header"
+            android:text="@string/rating_header"
             android:textSize="@dimen/recycler_item_imdbRating_text_size"
             app:layout_constraintBottom_toBottomOf="@id/imDbRating"
             app:layout_constraintEnd_toStartOf="@id/imDbRating"
             app:layout_constraintTop_toTopOf="@id/imDbRating" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="50dp"
+            android:layout_width="@dimen/imdb_image_width"
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/margin_4"
             android:src="@drawable/ic_imdb"
