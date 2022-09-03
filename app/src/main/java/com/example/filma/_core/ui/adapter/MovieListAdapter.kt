@@ -26,10 +26,9 @@ class MovieListAdapter(private val listener: RecyclerItemListener) :
             Glide.with(movieImage.context)
                 .load(itemMovie.imageUrl)
                 .error(R.drawable.ic_image_not_supported)
+                .placeholder(R.drawable.ic_movie_default_image)
                 .into(movieImage)
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -45,11 +44,13 @@ class MovieListAdapter(private val listener: RecyclerItemListener) :
 
     override fun getItemCount(): Int = movieListDiffer.currentList.size
 
-    companion object{
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Movie>(){
-            override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean = oldItem.id == newItem.id
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Movie>() {
+            override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
+                oldItem.id == newItem.id
 
-            override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean = oldItem == newItem
+            override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
+                oldItem == newItem
         }
     }
 }

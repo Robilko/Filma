@@ -42,14 +42,16 @@ data class MovieDetailsDTO(
     @SerializedName("keywordList")
     val keywordList: List<String>,
     @SerializedName("similars")
-    val similars: List<MovieDTO>
+    val similars: List<MovieDTO>,
+    @SerializedName("errorMessage")
+    val errorMessage: String?
 )
 
 data class ActorDTO(
     @SerializedName("id")
     val id: String,
     @SerializedName("image")
-    val image: String,
+    val imageUrl: String,
     @SerializedName("name")
     val name: String,
     @SerializedName("asCharacter")

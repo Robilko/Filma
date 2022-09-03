@@ -66,7 +66,7 @@ object ActorDtoToUiMapper {
         return actorList.map { actorDTO ->
             Actor(
                 id = actorDTO.id,
-                image = actorDTO.image,
+                imageUrl = actorDTO.imageUrl,
                 name = actorDTO.name,
                 asCharacter = actorDTO.asCharacter
             )

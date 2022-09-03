@@ -13,9 +13,11 @@
         app:cardCornerRadius="10dp">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/actor_image"
             android:layout_width="@dimen/actor_image_width"
             android:layout_height="@dimen/actor_image_height"
             android:scaleType="centerCrop"
+            android:src="@drawable/ic_actor_no_image"
             tools:src="@drawable/example_actor_image" />
 
     </com.google.android.material.card.MaterialCardView>
@@ -25,16 +27,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textStyle="bold"
         tools:text="@string/example_actor_text" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/asCharacter" />
+        android:text="@string/asCharacter"
+        android:textStyle="italic" />
 
     <TextView
-        android:id="@+id/character"
+        android:id="@+id/asCharacter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

@@ -1,7 +1,6 @@
 package com.example.filma.main.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,8 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.filma.MOVIE_ITEM_ID
 import com.example.filma.R
-import com.example.filma.TAG
 import com.example.filma._core.ui.adapter.MovieListAdapter
 import com.example.filma._core.ui.adapter.RecyclerItemListener
 import com.example.filma._core.ui.model.ListViewState
@@ -31,7 +30,7 @@ class MainFragment : Fragment() {
 
     private val recyclerItemListener = object : RecyclerItemListener {
         override fun onItemClick(itemMovie: Movie) {
-            //TODO("Not yet implemented")
+            startDetailsFragment(itemMovie.id)
         }
     }
 
@@ -42,10 +41,6 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d(
-            TAG,
-            "onCreateView() called with: inflater = $inflater, container = $container, savedInstanceState = $savedInstanceState"
-        )
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -57,33 +52,20 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d(
-            TAG,
-            "onViewCreated() called with: view = $view, savedInstanceState = $savedInstanceState"
-        )
         initViewModel()
         initView()
         initData()
-
-//        binding.buttonFirst.setOnClickListener {
-//            val itemId = "Some argument"
-//            val bundle = bundleOf("Some argument" to itemId)
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
-//        }
     }
 
     private fun initViewModel() {
-        Log.d(TAG, "initViewModel() called")
         viewModel.viewState.onEach { renderState(it) }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun initView() = with(binding) {
-        Log.d(TAG, "initView() called")
         mainRecycler.adapter = movieListAdapter
     }
 
     private fun initData() {
-        Log.d(TAG, "initData() called")
         viewModel.getData()
     }
 
@@ -134,5 +116,10 @@ class MainFragment : Fragment() {
             .setNegativeButton(R.string.close) { dialog, _ -> dialog.dismiss() }
             .create()
             .show()
+    }
+
+    private fun startDetailsFragment(id: String) {
+        val bundle = bundleOf(MOVIE_ITEM_ID to id)
+        findNavController().navigate(R.id.action_MainFragment_to_DetailsFragment, bundle)
     }
 }
