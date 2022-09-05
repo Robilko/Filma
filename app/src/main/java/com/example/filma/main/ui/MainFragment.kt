@@ -15,7 +15,7 @@ import com.example.filma.R
 import com.example.filma._core.ui.adapter.MovieListAdapter
 import com.example.filma._core.ui.adapter.RecyclerItemListener
 import com.example.filma._core.ui.model.ListViewState
-import com.example.filma._core.ui.model.Movie
+import com.example.filma._core.ui.model.MovieKin
 import com.example.filma.databinding.FragmentMainBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -29,7 +29,7 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val recyclerItemListener = object : RecyclerItemListener {
-        override fun onItemClick(itemMovie: Movie) {
+        override fun onItemClick(itemMovie: MovieKin) {
             startDetailsFragment(itemMovie.id)
         }
     }
@@ -89,7 +89,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun setDataToAdapter(data: List<Movie>) {
+    private fun setDataToAdapter(data: List<MovieKin>) {
         movieListAdapter.submitList(data)
     }
 

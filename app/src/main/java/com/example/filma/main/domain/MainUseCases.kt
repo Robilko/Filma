@@ -1,14 +1,14 @@
 package com.example.filma.main.domain
 
-import com.example.filma._core.ui.MovieDtoToUiMapper
-import com.example.filma._core.ui.model.Movie
+import com.example.filma._core.ui.MapperMovieDTOKinToUi
+import com.example.filma._core.ui.model.MovieKin
 
 class MainUseCases(private val repository: MainRepository) {
 
-    suspend fun getMostPopularMoviesList(): Result<List<Movie>> {
-        val result = repository.getMostPopularMoviesList()
+    suspend fun getNewReleasesMovieList(): Result<List<MovieKin>> {
+        val result = repository.getNewReleasesMovieList()
         return result.map { responseDTO ->
-            MovieDtoToUiMapper(responseDTO.movies)
+            MapperMovieDTOKinToUi(responseDTO.movieList)
         }
     }
 }

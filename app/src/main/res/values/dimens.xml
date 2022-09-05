@@ -5,10 +5,11 @@
     <dimen name="margin_4">4dp</dimen>
     <dimen name="movie_image_width_size">100dp</dimen>
     <dimen name="margin_8">8dp</dimen>
-    <dimen name="recycler_item_movie_title_size">30sp</dimen>
+    <dimen name="recycler_item_movie_title_size">20sp</dimen>
     <dimen name="recycler_item_imdbRating_text_size">20sp</dimen>
     <dimen name="details_movie_title_text_size">25sp</dimen>
     <dimen name="imdb_image_width">50dp</dimen>
     <dimen name="actor_image_width">100dp</dimen>
     <dimen name="actor_image_height">150dp</dimen>
+    <dimen name="recycler_item_movie_year_text_size">15sp</dimen>
 </resources>

@@ -1,7 +1,7 @@
 package com.example.filma._core.ui.adapter
 
-import com.example.filma._core.ui.model.Movie
+import com.example.filma._core.ui.model.MovieKin
 
 interface RecyclerItemListener {
-    fun onItemClick(itemMovie: Movie)
+    fun onItemClick(itemMovie: MovieKin)
 }

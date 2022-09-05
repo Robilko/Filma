@@ -27,14 +27,40 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_8"
-            android:textIsSelectable="true"
+            android:maxLines="2"
             android:textSize="@dimen/recycler_item_movie_title_size"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/kinopoisk_rating_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/movie_image"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             tools:text="@string/example_movie_title" />
+
+        <TextView
+            android:id="@+id/movie_alternative_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+            android:maxLines="2"
+            android:textSize="@dimen/recycler_item_movie_year_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/kinopoisk_rating_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/movie_image"
+            app:layout_constraintTop_toBottomOf="@+id/movie_title"
+            tools:text="@string/example_movie_title" />
+
+        <TextView
+            android:id="@+id/movie_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+            android:textSize="@dimen/recycler_item_movie_year_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/movie_image"
+            tools:text="@string/example_movie_year" />
 
         <TextView
             android:id="@+id/imDbRating"
@@ -48,7 +74,7 @@
             tools:text="@string/example_rating" />
 
         <TextView
-            android:id="@+id/rating_header"
+            android:id="@+id/imdb_rating_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_4"
@@ -59,13 +85,47 @@
             app:layout_constraintTop_toTopOf="@id/imDbRating" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imdb_rating_image"
             android:layout_width="@dimen/imdb_image_width"
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/margin_4"
             android:src="@drawable/ic_imdb"
             app:layout_constraintBottom_toBottomOf="@+id/imDbRating"
-            app:layout_constraintEnd_toStartOf="@+id/rating_header"
+            app:layout_constraintEnd_toStartOf="@+id/imdb_rating_header"
             app:layout_constraintTop_toTopOf="@+id/imDbRating" />
+
+        <TextView
+            android:id="@+id/kinopoiskRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+            android:textSize="@dimen/recycler_item_imdbRating_text_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imDbRating"
+            app:layout_constraintEnd_toEndOf="@+id/imDbRating"
+            app:layout_constraintStart_toStartOf="@+id/imDbRating"
+            tools:text="@string/example_rating" />
+
+        <TextView
+            android:id="@+id/kinopoisk_rating_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_4"
+            android:text="@string/rating_header"
+            android:textSize="@dimen/recycler_item_imdbRating_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/kinopoiskRating"
+            app:layout_constraintEnd_toStartOf="@id/imDbRating"
+            app:layout_constraintTop_toTopOf="@id/kinopoiskRating" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/kinopoisk_rating_image"
+            android:layout_width="@dimen/imdb_image_width"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/margin_4"
+            android:src="@drawable/ic_kinopoisk"
+            app:layout_constraintBottom_toBottomOf="@+id/kinopoiskRating"
+            app:layout_constraintEnd_toStartOf="@+id/kinopoisk_rating_header"
+            app:layout_constraintTop_toTopOf="@+id/kinopoiskRating" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

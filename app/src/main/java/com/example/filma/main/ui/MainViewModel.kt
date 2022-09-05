@@ -16,7 +16,7 @@ class MainViewModel(private val useCases: MainUseCases) : ViewModel() {
 
     fun getData() {
         viewModelScope.launch {
-            useCases.getMostPopularMoviesList()
+            useCases.getNewReleasesMovieList()
                 .onSuccess { _viewState.value = ListViewState.Data(it) }
                 .onFailure { _viewState.value = ListViewState.Error(message = it.message) }
         }

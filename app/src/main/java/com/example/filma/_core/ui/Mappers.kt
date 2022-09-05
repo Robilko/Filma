@@ -1,11 +1,10 @@
 package com.example.filma._core.ui
 
-import com.example.filma._core.data.api.model.ActorDTO
-import com.example.filma._core.data.api.model.MovieDTO
-import com.example.filma._core.data.api.model.MovieDetailsDTO
+import com.example.filma._core.data.api.model.*
 import com.example.filma._core.ui.model.Actor
 import com.example.filma._core.ui.model.Movie
 import com.example.filma._core.ui.model.MovieDetails
+import com.example.filma._core.ui.model.MovieKin
 
 object MovieDtoToUiMapper {
     operator fun invoke(
@@ -69,6 +68,36 @@ object ActorDtoToUiMapper {
                 imageUrl = actorDTO.imageUrl,
                 name = actorDTO.name,
                 asCharacter = actorDTO.asCharacter
+            )
+        }
+    }
+}
+
+object MapperMovieDTOKinToUi {
+    operator fun invoke(
+        movieList: List<MovieDTOKin>
+    ): List<MovieKin> {
+        return movieList.map { movieDTOKin ->
+            MovieKin(
+                id = movieDTOKin.id.toString(),
+                title = movieDTOKin.name ?: movieDTOKin.alternativeName,
+                alternativeTitle = movieDTOKin.alternativeName,
+                imageUrl = movieDTOKin.poster.previewUrl,
+                imDbRating = movieDTOKin.rating.imdb.let {
+                    if (it == 0.0) {
+                        "-"
+                    } else {
+                        it.toString()
+                    }
+                },
+                kinopoiskRating = movieDTOKin.rating.kp.let {
+                    if (it == 0.0) {
+                        "-"
+                    } else {
+                        it.toString()
+                    }
+                },
+                year = movieDTOKin.year.toString()
             )
         }
     }
