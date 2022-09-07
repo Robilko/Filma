@@ -11,9 +11,9 @@ import java.io.IOException
 class MainRepositoryImpl(
     private val apiService: ApiService
 ) : MainRepository {
-    override suspend fun getNewReleasesMovieList(): Result<ResponseDTO> {
+    override suspend fun getNewReleasesMovieList(pageNumber: Int): Result<ResponseDTO> {
         return try {
-            val response = withContext(Dispatchers.IO) { apiService.getNewReleasesMovieList() }
+            val response = withContext(Dispatchers.IO) { apiService.getNewReleasesMovieList(pageNumber = pageNumber) }
 
             if (response.errorMessage.isNullOrEmpty()) {
                 Result.success(value = response)

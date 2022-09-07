@@ -2,7 +2,7 @@ package com.example.filma._core.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -11,11 +11,8 @@ import com.example.filma._core.ui.model.Movie
 import com.example.filma.databinding.FragmentMainRecycleItemBinding
 
 class MovieListAdapter(private val listener: RecyclerItemListener) :
-    RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>() {
+    PagingDataAdapter<Movie, MovieListAdapter.MovieViewHolder>(DIFF_CALLBACK) {
 
-    private val movieListDiffer = AsyncListDiffer(this, DIFF_CALLBACK)
-
-    fun submitList(list: List<Movie>) = movieListDiffer.submitList(list)
     inner class MovieViewHolder(private val binding: FragmentMainRecycleItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(itemMovie: Movie) = with(binding) {
@@ -40,11 +37,9 @@ class MovieListAdapter(private val listener: RecyclerItemListener) :
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie = movieListDiffer.currentList[position]
-        holder.bind(itemMovie = movie)
+        val movie = getItem(position)
+        movie?.let { holder.bind(itemMovie = movie) }
     }
-
-    override fun getItemCount(): Int = movieListDiffer.currentList.size
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Movie>() {

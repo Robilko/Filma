@@ -15,23 +15,11 @@ object MapperMovieDtoToUi {
         return movieList.map { movieDTO ->
             Movie(
                 id = movieDTO.id.toString(),
-                title = movieDTO.name ?: movieDTO.alternativeName,
-                alternativeTitle = movieDTO.alternativeName,
+                title = movieDTO.name ?: movieDTO.alternativeName.orEmpty() ,
+                alternativeTitle = movieDTO.alternativeName.orEmpty(),
                 imageUrl = movieDTO.poster.previewUrl,
-                imDbRating = movieDTO.rating.imdb.let {
-                    if (it == 0.0) {
-                        "-"
-                    } else {
-                        it.toString()
-                    }
-                },
-                kinopoiskRating = movieDTO.rating.kp.let {
-                    if (it == 0.0) {
-                        "-"
-                    } else {
-                        it.toString()
-                    }
-                },
+                imDbRating = getVerifiedRating(movieDTO.rating.imdb),
+                kinopoiskRating = getVerifiedRating(movieDTO.rating.kp),
                 year = movieDTO.year.toString()
             )
         }
@@ -46,25 +34,13 @@ object MapperDetailsMovieDtoToUi {
             id = detailsMovie.id,
             imdbId = detailsMovie.externalId.imdb.orEmpty(),
             type = detailsMovie.type,
-            name = detailsMovie.name,
-            description = detailsMovie.description,
+            name = detailsMovie.name.orEmpty(),
+            description = detailsMovie.description.orEmpty(),
             slogan = detailsMovie.slogan.orEmpty(),
             year = detailsMovie.year,
             posterUrl = detailsMovie.poster.previewUrl,
-            kinopoiskRating = detailsMovie.rating.kp.let {
-                if (it == 0.0) {
-                    "-"
-                } else {
-                    it.toString()
-                }
-            },
-            imDbRating = detailsMovie.rating.imdb.let {
-                if (it == 0.0) {
-                    "-"
-                } else {
-                    it.toString()
-                }
-            },
+            kinopoiskRating = getVerifiedRating(detailsMovie.rating.kp),
+            imDbRating = getVerifiedRating(detailsMovie.rating.imdb),
             videoTrailerUrl = detailsMovie.videos.trailers[0].url,
             movieLength = detailsMovie.movieLength.minutes.toString(),
             facts = detailsMovie.facts.map { it.value }.toList(),
@@ -81,8 +57,8 @@ object MapperPersonDTOToUi {
         val persons = list.map { personDTO ->
             Person(
                 id = personDTO.id,
-                name = personDTO.name,
-                enName = personDTO.enName,
+                name = personDTO.name ?: personDTO.enName.orEmpty(),
+                enName = personDTO.enName.orEmpty(),
                 photoUrl = personDTO.photoUrl,
                 enProfession = personDTO.enProfession,
                 description = personDTO.description
@@ -92,3 +68,5 @@ object MapperPersonDTOToUi {
         return persons.filter { it.enProfession == profession }.toList()
     }
 }
+
+private fun getVerifiedRating(rating: Double): String = if (rating == 0.0) "-" else rating.toString()

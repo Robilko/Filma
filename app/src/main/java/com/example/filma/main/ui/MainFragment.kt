@@ -8,17 +8,18 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.example.filma.MOVIE_ITEM_ID
 import com.example.filma.R
 import com.example.filma._core.ui.adapter.MovieListAdapter
 import com.example.filma._core.ui.adapter.RecyclerItemListener
-import com.example.filma._core.ui.model.state.ListViewState
 import com.example.filma._core.ui.model.Movie
 import com.example.filma.databinding.FragmentMainBinding
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -52,45 +53,50 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViewModel()
-        initView()
-        initData()
+        setupList()
+        setupView()
     }
 
-    private fun initViewModel() {
-        viewModel.viewState.onEach { renderState(it) }.launchIn(viewLifecycleOwner.lifecycleScope)
-    }
 
-    private fun initView() = with(binding) {
+    private fun setupList() = with(binding) {
         mainRecycler.adapter = movieListAdapter
     }
 
-    private fun initData() {
-        viewModel.getData()
+    private fun setupView() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.items.collect {
+                    movieListAdapter.submitData(it)
+                }
+
+                movieListAdapter.addLoadStateListener {
+                    renderState(it.refresh)
+                }
+            }
+        }
+
+
     }
 
-    private fun renderState(state: ListViewState) = when (state) {
-        is ListViewState.Loading -> {
+    private fun renderState(state: LoadState) = when (state) {
+        is LoadState.Loading -> {
             enableProgress(state = true)
             enableEmptyState(state = false)
             enableContent(state = false)
         }
-        is ListViewState.Error -> {
+        is LoadState.Error -> {
             enableEmptyState(state = true)
             enableProgress(state = false)
             enableContent(state = false)
-            showToastMessage(message = state.message ?: getString(R.string.unknown_error))
+            showToastMessage(
+                message = state.error.localizedMessage ?: getString(R.string.unknown_error)
+            )
         }
-        is ListViewState.Data -> {
+        else -> {
             enableProgress(state = false)
             enableContent(state = true)
             enableEmptyState(state = false)
-            setDataToAdapter(data = state.data)
         }
-    }
-
-    private fun setDataToAdapter(data: List<Movie>) {
-        movieListAdapter.submitList(data)
     }
 
     private fun showToastMessage(message: String) {
@@ -112,7 +118,7 @@ class MainFragment : Fragment() {
     private fun showWarningDialog(errorMessage: String) {
         AlertDialog.Builder(requireContext())
             .setTitle(errorMessage)
-            .setPositiveButton(R.string.retry) { _, _ -> viewModel.getData() }
+            .setPositiveButton(getString(R.string.retry)) { _, _ -> movieListAdapter.retry() }
             .setNegativeButton(R.string.close) { dialog, _ -> dialog.dismiss() }
             .create()
             .show()

@@ -21,7 +21,8 @@ interface ApiService {
     @GET(NEW_RELEASES_LIST)
     suspend fun getNewReleasesMovieList(
         @Query("token") apiKey: String = API_KEY,
-        @Query("page") pageNumber: Int = 1
+        @Query("page") pageNumber: Int = 1,
+        @Query("limit") limit: Int = MOVIES_ON_PAGE_LIMIT
     ) : ResponseDTO
 
     companion object {

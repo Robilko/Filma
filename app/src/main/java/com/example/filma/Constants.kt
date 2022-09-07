@@ -8,3 +8,5 @@ const val TAG = "TAG"
 const val MOVIE_ITEM_ID = "Movie item id"
 const val PERSON_PROFESSION_DIRECTOR = "director"
 const val PERSON_PROFESSION_ACTOR = "actor"
+const val MOVIES_ON_PAGE_LIMIT = 30
+const val STARTING_PAGE_KEY = 1
