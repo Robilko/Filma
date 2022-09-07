@@ -11,9 +11,9 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.filma.MOVIE_ITEM_ID
 import com.example.filma.R
-import com.example.filma._core.ui.adapter.ActorListAdapter
-import com.example.filma._core.ui.model.ItemViewState
-import com.example.filma._core.ui.model.MovieDetails
+import com.example.filma._core.ui.adapter.PersonListAdapter
+import com.example.filma._core.ui.model.DetailsMovie
+import com.example.filma._core.ui.model.state.ItemViewState
 import com.example.filma.databinding.FragmentDetailsBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -23,7 +23,8 @@ class DetailsFragment : Fragment() {
     private val viewModel by viewModel<DetailsViewModel>()
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
-    private val actorListAdapter: ActorListAdapter = ActorListAdapter()
+    private val actorListAdapter: PersonListAdapter = PersonListAdapter()
+    private val directorsListAdapter: PersonListAdapter = PersonListAdapter()
     private lateinit var movieId: String
 
     override fun onCreateView(
@@ -52,6 +53,7 @@ class DetailsFragment : Fragment() {
 
     private fun initView() = with(binding) {
         actorsLayout.actorsRecycler.adapter = actorListAdapter
+        directorsLayout.directorsRecycler.adapter = directorsListAdapter
     }
 
     private fun initData() {
@@ -79,31 +81,30 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    private fun setData(data: MovieDetails) {
+    private fun setData(data: DetailsMovie) {
         with(binding.movieParametersLayout) {
             Glide.with(detailsMovieImage.context)
-                .load(data.imageUrl)
+                .load(data.posterUrl)
                 .error(R.drawable.ic_image_not_supported)
                 .placeholder(R.drawable.ic_movie_default_image)
                 .into(detailsMovieImage)
-            detailsTitle.text = data.title
-            detailsMovieYearContent.text = data.year
+            detailsTitle.text = data.name
+            detailsMovieYearContent.text = data.year.toString()
             detailsMovieTypeContent.text = data.type
-            detailsMovieGenreContent.text = data.genres
-            detailsMovieReleaseDateContent.text = data.releaseDate
-            detailsMovieRuntimeContent.text = data.runtimeStr
-            detailsRatingContent.text = data.imDbRating
+            detailsMovieGenreContent.text = data.genres.toString()
+            detailsMovieCountryContent.text = data.countries.toString()
+            detailsMovieRuntimeContent.text = data.movieLength
+            detailsImdbRatingContent.text = data.imDbRating
+            detailsKinopoiskRatingContent.text = data.kinopoiskRating
         }
 
         with(binding.plotLayout) {
-            detailsMoviePlotText.text = data.plot
+            detailsMoviePlotText.text = data.description
         }
 
-        with(binding.directorsLayout) {
-            directorsText.text = data.directors
-        }
+        directorsListAdapter.submitList(data.directors)
 
-        actorListAdapter.submitList(data.actorList)
+        actorListAdapter.submitList(data.actors)
 
     }
 

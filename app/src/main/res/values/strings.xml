@@ -17,13 +17,13 @@
     <string name="close">Закрыть</string>
     <string name="details_year_header">Год:</string>
     <string name="details_type_header">Тип:</string>
-    <string name="details_release_date_header">Дата релиза:</string>
+    <string name="details_country_header">Страна:</string>
     <string name="details_runtime_header">Продолжительность:</string>
     <string name="details_genre_header">Жанр:</string>
     <string name="example_movie_year">2010</string>
     <string name="example_movie_type">Movie</string>
     <string name="example_movie_genre">Thriller</string>
-    <string name="example_movie_release_date">25.01.2010</string>
+    <string name="example_movie_country_text">США</string>
     <string name="example_movie_runtime">1:25:05</string>
     <string name="movie_plot_header_text">Сюжет фильма:</string>
     <string name="example_movie_plot">A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.</string>
@@ -31,6 +31,6 @@
     <string name="example_actor_text">Michael Caine</string>
     <string name="asCharacter">играет</string>
     <string name="example_character_text">Miles</string>
-    <string name="movie_directors_header_text">Режиссер:</string>
+    <string name="movie_directors_header_text">Режиссеры:</string>
     <string name="example_movie_director">Christopher Nolan</string>
 </resources>

@@ -11,21 +11,23 @@
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_movie_default_image"
-        tools:src="@drawable/example_movie_image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/details_title"
+        tools:src="@drawable/example_movie_image" />
 
     <TextView
         android:id="@+id/details_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_8"
+        android:layout_marginBottom="@dimen/margin_8"
+        android:gravity="center"
         android:textColor="@color/details_parameters_text_color"
         android:textSize="@dimen/details_movie_title_text_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/details_movie_image"
-        app:layout_constraintTop_toTopOf="@id/details_movie_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/example_movie_title" />
 
     <TextView
@@ -33,14 +35,14 @@
         style="@style/DetailsMovieParametersStyle.Header"
         android:text="@string/details_year_header"
         app:layout_constraintStart_toEndOf="@+id/details_movie_image"
-        app:layout_constraintTop_toTopOf="@+id/details_movie_year_content" />
+        app:layout_constraintTop_toTopOf="@+id/details_movie_image" />
 
     <TextView
         android:id="@+id/details_movie_year_content"
         style="@style/DetailsMovieParametersStyle.Content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/details_movie_year_header"
-        app:layout_constraintTop_toBottomOf="@id/details_title"
+        app:layout_constraintStart_toEndOf="@+id/details_movie_image"
+        app:layout_constraintTop_toBottomOf="@id/details_movie_year_header"
         tools:text="@string/example_movie_year" />
 
     <TextView
@@ -48,14 +50,14 @@
         style="@style/DetailsMovieParametersStyle.Header"
         android:text="@string/details_type_header"
         app:layout_constraintStart_toEndOf="@+id/details_movie_image"
-        app:layout_constraintTop_toTopOf="@+id/details_movie_type_content" />
+        app:layout_constraintTop_toBottomOf="@+id/details_movie_year_content" />
 
     <TextView
         android:id="@+id/details_movie_type_content"
         style="@style/DetailsMovieParametersStyle.Content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/details_movie_type_header"
-        app:layout_constraintTop_toBottomOf="@id/details_movie_year_content"
+        app:layout_constraintStart_toEndOf="@+id/details_movie_image"
+        app:layout_constraintTop_toBottomOf="@id/details_movie_type_header"
         tools:text="@string/example_movie_type" />
 
     <TextView
@@ -63,72 +65,100 @@
         style="@style/DetailsMovieParametersStyle.Header"
         android:text="@string/details_genre_header"
         app:layout_constraintStart_toEndOf="@+id/details_movie_image"
-        app:layout_constraintTop_toTopOf="@+id/details_movie_genre_content" />
+        app:layout_constraintTop_toBottomOf="@+id/details_movie_type_content" />
 
     <TextView
         android:id="@+id/details_movie_genre_content"
         style="@style/DetailsMovieParametersStyle.Content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/details_movie_genre_header"
-        app:layout_constraintTop_toBottomOf="@id/details_movie_type_content"
+        app:layout_constraintStart_toEndOf="@+id/details_movie_image"
+        app:layout_constraintTop_toBottomOf="@id/details_movie_genre_header"
         tools:text="@string/example_movie_genre" />
 
     <TextView
-        android:id="@+id/details_movie_release_date_header"
+        android:id="@+id/details_movie_country_header"
         style="@style/DetailsMovieParametersStyle.Header"
-        android:text="@string/details_release_date_header"
+        android:text="@string/details_country_header"
         app:layout_constraintStart_toEndOf="@+id/details_movie_image"
         app:layout_constraintTop_toBottomOf="@+id/details_movie_genre_content" />
 
     <TextView
-        android:id="@+id/details_movie_release_date_content"
+        android:id="@+id/details_movie_country_content"
         style="@style/DetailsMovieParametersStyle.Content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/details_movie_release_date_header"
-        app:layout_constraintTop_toBottomOf="@id/details_movie_genre_content"
-        tools:text="@string/example_movie_release_date" />
+        app:layout_constraintStart_toEndOf="@+id/details_movie_image"
+        app:layout_constraintTop_toBottomOf="@id/details_movie_country_header"
+        tools:text="@string/example_movie_country_text" />
 
     <TextView
         android:id="@+id/details_movie_runtime_header"
         style="@style/DetailsMovieParametersStyle.Header"
         android:text="@string/details_runtime_header"
         app:layout_constraintStart_toEndOf="@+id/details_movie_image"
-        app:layout_constraintTop_toBottomOf="@+id/details_movie_release_date_content" />
+        app:layout_constraintTop_toBottomOf="@+id/details_movie_country_content" />
 
     <TextView
         android:id="@+id/details_movie_runtime_content"
         style="@style/DetailsMovieParametersStyle.Content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/details_movie_runtime_header"
-        app:layout_constraintTop_toBottomOf="@id/details_movie_release_date_content"
+        app:layout_constraintStart_toEndOf="@+id/details_movie_image"
+        app:layout_constraintTop_toBottomOf="@id/details_movie_runtime_header"
         tools:text="@string/example_movie_runtime" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/details_imdb_image"
         android:layout_width="@dimen/imdb_image_width"
-        android:layout_height="0dp"
+        android:layout_height="15dp"
         android:layout_margin="@dimen/margin_8"
         android:src="@drawable/ic_imdb"
-        app:layout_constraintBottom_toBottomOf="@id/details_movie_image"
-        app:layout_constraintStart_toEndOf="@id/details_movie_image" />
+        app:layout_constraintBottom_toBottomOf="@id/details_rating_header"
+        app:layout_constraintStart_toEndOf="@id/details_movie_image"
+        app:layout_constraintTop_toTopOf="@+id/details_rating_header" />
 
     <TextView
         android:id="@+id/details_rating_header"
         style="@style/DetailsMovieParametersStyle.Header"
         android:text="@string/rating_header"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/details_imdb_image"
+        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@id/details_imdb_image"
-        app:layout_constraintTop_toTopOf="@id/details_imdb_image" />
+        app:layout_constraintTop_toBottomOf="@+id/details_kinopoisk_rating_header" />
 
     <TextView
-        android:id="@+id/details_rating_content"
+        android:id="@+id/details_imdb_rating_content"
         style="@style/DetailsMovieParametersStyle.Content"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/details_rating_header"
         app:layout_constraintStart_toEndOf="@id/details_rating_header"
         app:layout_constraintTop_toTopOf="@id/details_rating_header"
+        tools:text="@string/example_rating" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/details_kinopoisk_image"
+        android:layout_width="@dimen/imdb_image_width"
+        android:layout_height="15dp"
+        android:layout_margin="@dimen/margin_8"
+        android:src="@drawable/ic_kinopoisk"
+        app:layout_constraintBottom_toBottomOf="@+id/details_kinopoisk_rating_header"
+        app:layout_constraintStart_toEndOf="@id/details_movie_image"
+        app:layout_constraintTop_toTopOf="@+id/details_kinopoisk_rating_header" />
+
+    <TextView
+        android:id="@+id/details_kinopoisk_rating_header"
+        style="@style/DetailsMovieParametersStyle.Header"
+        android:text="@string/rating_header"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/details_kinopoisk_image"
+        app:layout_constraintTop_toBottomOf="@+id/details_movie_runtime_content" />
+
+    <TextView
+        android:id="@+id/details_kinopoisk_rating_content"
+        style="@style/DetailsMovieParametersStyle.Content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/details_kinopoisk_rating_header"
+        app:layout_constraintStart_toEndOf="@id/details_kinopoisk_rating_header"
+        app:layout_constraintTop_toTopOf="@id/details_kinopoisk_rating_header"
         tools:text="@string/example_rating" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

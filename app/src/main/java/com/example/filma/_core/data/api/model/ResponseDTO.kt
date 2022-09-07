@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ResponseDTO(
     @SerializedName("docs")
-    val movieList: List<MovieDTOKin>,
+    val movieList: List<MovieFromListDTO>,
     @SerializedName("total")
     val total: Int,
     @SerializedName("limit")
@@ -17,17 +17,17 @@ data class ResponseDTO(
     val errorMessage: String?
 )
 
-data class MovieDTOKin(
+data class MovieFromListDTO(
     @SerializedName("externalId")
-    val externalId: ExternalId,
+    val externalId: ExternalIdDTO,
     @SerializedName("logo")
-    val logo: Logo,
+    val logo: LogoDTO,
     @SerializedName("poster")
-    val poster: Poster,
+    val poster: PosterDTO,
     @SerializedName("rating")
-    val rating: Rating,
+    val rating: RatingDTO,
     @SerializedName("votes")
-    val votes: Votes,
+    val votes: VoteDTO,
     @SerializedName("movieLength")
     val movieLength: Int,
     @SerializedName("id")
@@ -43,17 +43,17 @@ data class MovieDTOKin(
     @SerializedName("alternativeName")
     val alternativeName: String,
     @SerializedName("names")
-    val names: List<Names>
+    val names: List<NameDTO>
 )
 
-data class Names(
+data class NameDTO(
     @SerializedName("_id")
     val id: String,
     @SerializedName("name")
     val name: String
 )
 
-data class Votes(
+data class VoteDTO(
     @SerializedName("_id")
     val id: String,
     @SerializedName("kp")
@@ -68,7 +68,7 @@ data class Votes(
     val await: Int
 )
 
-data class Rating(
+data class RatingDTO(
     @SerializedName("_id")
     val id: String,
     @SerializedName("kp")
@@ -83,7 +83,7 @@ data class Rating(
     val await: Double
 )
 
-data class Poster(
+data class PosterDTO(
     @SerializedName("_id")
     val id: String,
     @SerializedName("url")
@@ -92,12 +92,12 @@ data class Poster(
     val previewUrl: String
 )
 
-data class Logo(
+data class LogoDTO(
     @SerializedName("_id")
     val id: String
 )
 
-data class ExternalId(
+data class ExternalIdDTO(
     @SerializedName("_id")
     val id: String,
     @SerializedName("imdb")

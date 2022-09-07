@@ -1,104 +1,94 @@
 package com.example.filma._core.ui
 
+import com.example.filma.PERSON_PROFESSION_ACTOR
+import com.example.filma.PERSON_PROFESSION_DIRECTOR
 import com.example.filma._core.data.api.model.*
-import com.example.filma._core.ui.model.Actor
+import com.example.filma._core.ui.model.DetailsMovie
 import com.example.filma._core.ui.model.Movie
-import com.example.filma._core.ui.model.MovieDetails
-import com.example.filma._core.ui.model.MovieKin
+import com.example.filma._core.ui.model.Person
+import kotlin.time.Duration.Companion.minutes
 
-object MovieDtoToUiMapper {
+object MapperMovieDtoToUi {
     operator fun invoke(
-        movieList: List<MovieDTO>
+        movieList: List<MovieFromListDTO>
     ): List<Movie> {
         return movieList.map { movieDTO ->
             Movie(
-                id = movieDTO.id,
-                title = movieDTO.title,
-                imageUrl = movieDTO.imageUrl,
-                imDbRating = if (movieDTO.imDbRating.isNullOrEmpty()) {
-                    " - "
-                } else {
-                    movieDTO.imDbRating
-                }
+                id = movieDTO.id.toString(),
+                title = movieDTO.name ?: movieDTO.alternativeName,
+                alternativeTitle = movieDTO.alternativeName,
+                imageUrl = movieDTO.poster.previewUrl,
+                imDbRating = movieDTO.rating.imdb.let {
+                    if (it == 0.0) {
+                        "-"
+                    } else {
+                        it.toString()
+                    }
+                },
+                kinopoiskRating = movieDTO.rating.kp.let {
+                    if (it == 0.0) {
+                        "-"
+                    } else {
+                        it.toString()
+                    }
+                },
+                year = movieDTO.year.toString()
             )
         }
     }
 }
 
-object MovieDetailsDtoToUiMapper {
+object MapperDetailsMovieDtoToUi {
     operator fun invoke(
-        movieDetails: MovieDetailsDTO
-    ): MovieDetails {
-        return MovieDetails(
-            id = movieDetails.id,
-            title = movieDetails.title,
-            originalTitle = movieDetails.originalTitle,
-            fullTitle = movieDetails.fullTitle,
-            type = movieDetails.type,
-            year = movieDetails.year,
-            imageUrl = movieDetails.imageUrl,
-            releaseDate = movieDetails.releaseDate,
-            runtimeMins = movieDetails.runtimeMins,
-            runtimeStr = movieDetails.runtimeStr,
-            plot = movieDetails.plot,
-            plotLocal = movieDetails.plotLocal,
-            plotLocalIsRtl = movieDetails.plotLocalIsRtl,
-            directors = movieDetails.directors,
-            actorList = ActorDtoToUiMapper(movieDetails.actorList),
-            genres = movieDetails.genres,
-            imDbRating = if (movieDetails.imDbRating.isNullOrEmpty()) {
-                " - "
-            } else {
-                movieDetails.imDbRating
+        detailsMovie: DetailsMovieDTO
+    ): DetailsMovie {
+        return DetailsMovie(
+            id = detailsMovie.id,
+            imdbId = detailsMovie.externalId.imdb.orEmpty(),
+            type = detailsMovie.type,
+            name = detailsMovie.name,
+            description = detailsMovie.description,
+            slogan = detailsMovie.slogan.orEmpty(),
+            year = detailsMovie.year,
+            posterUrl = detailsMovie.poster.previewUrl,
+            kinopoiskRating = detailsMovie.rating.kp.let {
+                if (it == 0.0) {
+                    "-"
+                } else {
+                    it.toString()
+                }
             },
-            keywords = movieDetails.keywords,
-            keywordList = movieDetails.keywordList,
-            similars = MovieDtoToUiMapper(movieDetails.similars)
+            imDbRating = detailsMovie.rating.imdb.let {
+                if (it == 0.0) {
+                    "-"
+                } else {
+                    it.toString()
+                }
+            },
+            videoTrailerUrl = detailsMovie.videos.trailers[0].url,
+            movieLength = detailsMovie.movieLength.minutes.toString(),
+            facts = detailsMovie.facts.map { it.value }.toList(),
+            genres = detailsMovie.genres.map { it.name }.toList(),
+            countries = detailsMovie.countries.map { it.name }.toList(),
+            directors = MapperPersonDTOToUi(detailsMovie.persons, PERSON_PROFESSION_DIRECTOR),
+            actors = MapperPersonDTOToUi(detailsMovie.persons, PERSON_PROFESSION_ACTOR)
         )
     }
 }
 
-object ActorDtoToUiMapper {
-    operator fun invoke(
-        actorList: List<ActorDTO>
-    ): List<Actor> {
-        return actorList.map { actorDTO ->
-            Actor(
-                id = actorDTO.id,
-                imageUrl = actorDTO.imageUrl,
-                name = actorDTO.name,
-                asCharacter = actorDTO.asCharacter
+object MapperPersonDTOToUi {
+    operator fun invoke(list: List<PersonDTO>, profession: String): List<Person> {
+        val persons = list.map { personDTO ->
+            Person(
+                id = personDTO.id,
+                name = personDTO.name,
+                enName = personDTO.enName,
+                photoUrl = personDTO.photoUrl,
+                enProfession = personDTO.enProfession,
+                description = personDTO.description
             )
         }
-    }
-}
 
-object MapperMovieDTOKinToUi {
-    operator fun invoke(
-        movieList: List<MovieDTOKin>
-    ): List<MovieKin> {
-        return movieList.map { movieDTOKin ->
-            MovieKin(
-                id = movieDTOKin.id.toString(),
-                title = movieDTOKin.name ?: movieDTOKin.alternativeName,
-                alternativeTitle = movieDTOKin.alternativeName,
-                imageUrl = movieDTOKin.poster.previewUrl,
-                imDbRating = movieDTOKin.rating.imdb.let {
-                    if (it == 0.0) {
-                        "-"
-                    } else {
-                        it.toString()
-                    }
-                },
-                kinopoiskRating = movieDTOKin.rating.kp.let {
-                    if (it == 0.0) {
-                        "-"
-                    } else {
-                        it.toString()
-                    }
-                },
-                year = movieDTOKin.year.toString()
-            )
-        }
+        return persons.filter { it.enProfession == profession }.toList()
     }
 }

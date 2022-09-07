@@ -1,7 +1,7 @@
 package com.example.filma._core.data.api
 
 import com.example.filma.*
-import com.example.filma._core.data.api.model.MovieDetailsDTO
+import com.example.filma._core.data.api.model.DetailsMovieDTO
 import com.example.filma._core.data.api.model.ResponseDTO
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -14,10 +14,9 @@ interface ApiService {
 
     @GET(TITLE)
     suspend fun getMovieDetails(
-        @Query("lang") language: String = "en",
-        @Query("apiKey") apiKey: String = API_KEY,
-        @Query("id") id: String
-    ): MovieDetailsDTO
+        @Query("search") id: String,
+        @Query("token") apiKey: String = API_KEY
+    ): DetailsMovieDTO
 
     @GET(NEW_RELEASES_LIST)
     suspend fun getNewReleasesMovieList(

@@ -2,7 +2,7 @@ package com.example.filma.details.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.filma._core.ui.model.ItemViewState
+import com.example.filma._core.ui.model.state.ItemViewState
 import com.example.filma.details.domain.DetailsUseCases
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
