@@ -11,9 +11,9 @@ data class DetailsMovieDTO(
     @SerializedName("type")
     val type: String,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("slogan")
     val slogan: String?,
     @SerializedName("year")
@@ -40,15 +40,15 @@ data class PersonDTO(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("enName")
-    val enName: String,
+    val enName: String?,
     @SerializedName("photo")
     val photoUrl: String,
     @SerializedName("enProfession")
     val enProfession: String,
     @SerializedName("description")
-    val description: String
+    val description: String?
 )
 
 data class CountryDTO(
@@ -79,13 +79,13 @@ data class TrailerDTO(
     @SerializedName("url")
     val url: String,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("site")
-    val site: String,
+    val site: String?,
     @SerializedName("size")
     val size: Int,
     @SerializedName("type")
-    val type: String
+    val type: String?
 )
 
 data class DetailsMovieRatingDTO(

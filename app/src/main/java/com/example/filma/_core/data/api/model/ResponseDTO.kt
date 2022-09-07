@@ -41,7 +41,7 @@ data class MovieFromListDTO(
     @SerializedName("year")
     val year: Int,
     @SerializedName("alternativeName")
-    val alternativeName: String,
+    val alternativeName: String?,
     @SerializedName("names")
     val names: List<NameDTO>
 )
@@ -78,7 +78,7 @@ data class RatingDTO(
     @SerializedName("filmCritics")
     val filmCritics: Double,
     @SerializedName("russianFilmCritics")
-    val russianFilmCritics: Int,
+    val russianFilmCritics: Double,
     @SerializedName("await")
     val await: Double
 )
