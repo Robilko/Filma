@@ -4,7 +4,7 @@ data class Movie(
     val id: String,
     val title: String,
     val alternativeTitle: String,
-    val imageUrl: String,
+    val imageUrl: String?,
     val imDbRating: String,
     val kinopoiskRating: String?,
     val year: String

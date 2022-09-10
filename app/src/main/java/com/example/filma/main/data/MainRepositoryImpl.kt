@@ -1,5 +1,7 @@
 package com.example.filma.main.data
 
+import android.util.Log
+import com.example.filma.TAG
 import com.example.filma._core.data.api.ApiService
 import com.example.filma._core.data.api.model.ResponseDTO
 import com.example.filma.main.domain.MainRepository
@@ -13,7 +15,8 @@ class MainRepositoryImpl(
 ) : MainRepository {
     override suspend fun getNewReleasesMovieList(pageNumber: Int): Result<ResponseDTO> {
         return try {
-            val response = withContext(Dispatchers.IO) { apiService.getNewReleasesMovieList(pageNumber = pageNumber) }
+            val response =
+                withContext(Dispatchers.IO) { apiService.getNewReleasesMovieList(pageNumber = pageNumber) }
 
             if (response.errorMessage.isNullOrEmpty()) {
                 Result.success(value = response)
@@ -23,6 +26,7 @@ class MainRepositoryImpl(
         } catch (ex: HttpException) {
             Result.failure(exception = ex)
         } catch (ex: IOException) {
+            Log.d(TAG, "${ex.message}")
             Result.failure(exception = ex)
         }
     }

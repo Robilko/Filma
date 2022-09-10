@@ -17,7 +17,7 @@ object MapperMovieDtoToUi {
                 id = movieDTO.id.toString(),
                 title = movieDTO.name ?: movieDTO.alternativeName.orEmpty() ,
                 alternativeTitle = movieDTO.alternativeName.orEmpty(),
-                imageUrl = movieDTO.poster.previewUrl,
+                imageUrl = movieDTO.poster?.let { it.previewUrl ?: it.url },
                 imDbRating = getVerifiedRating(movieDTO.rating.imdb),
                 kinopoiskRating = getVerifiedRating(movieDTO.rating.kp),
                 year = movieDTO.year.toString()

@@ -33,7 +33,9 @@ data class DetailsMovieDTO(
     @SerializedName("countries")
     val countries: List<CountryDTO>,
     @SerializedName("persons")
-    val persons: List<PersonDTO>
+    val persons: List<PersonDTO>,
+    @SerializedName("message")
+    val errorMessage: String?
 )
 
 data class PersonDTO(

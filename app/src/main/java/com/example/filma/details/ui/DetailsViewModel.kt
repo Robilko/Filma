@@ -15,6 +15,7 @@ class DetailsViewModel(private val useCases: DetailsUseCases) : ViewModel() {
     val viewState: StateFlow<ItemViewState> = _viewState.asStateFlow()
 
     fun getMovieDetails(movieId: String) {
+        _viewState.value = ItemViewState.Loading
         viewModelScope.launch {
             useCases.getMovieDetails(movieId)
                 .onSuccess { _viewState.value = ItemViewState.Data(it) }

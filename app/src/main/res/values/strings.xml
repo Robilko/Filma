@@ -33,4 +33,6 @@
     <string name="example_character_text">Miles</string>
     <string name="movie_directors_header_text">Режиссеры:</string>
     <string name="example_movie_director">Christopher Nolan</string>
+    <string name="search_hint_text">Введите название фильма...</string>
+    <string name="movie_search">Поиск по названию</string>
 </resources>

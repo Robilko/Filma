@@ -12,7 +12,7 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET(TITLE)
+    @GET(MOVIE_BY_ID)
     suspend fun getMovieDetails(
         @Query("search") id: String,
         @Query("token") apiKey: String = API_KEY
@@ -23,7 +23,16 @@ interface ApiService {
         @Query("token") apiKey: String = API_KEY,
         @Query("page") pageNumber: Int = 1,
         @Query("limit") limit: Int = MOVIES_ON_PAGE_LIMIT
-    ) : ResponseDTO
+    ): ResponseDTO
+
+    @GET(SEARCH_BY_NAME_LIST)
+    suspend fun getMovieListSearchedByName(
+        @Query("search") name: String,
+        @Query("isStrict") strict: String = "false",
+        @Query("token") apiKey: String = API_KEY,
+        @Query("page") pageNumber: Int = 1,
+        @Query("limit") limit: Int = MOVIES_ON_PAGE_LIMIT
+    ): ResponseDTO
 
     companion object {
         fun getInstance(): ApiService {

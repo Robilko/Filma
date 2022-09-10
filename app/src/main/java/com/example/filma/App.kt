@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.filma._core.di.appModule
 import com.example.filma.details.di.detailsModule
 import com.example.filma.main.di.mainModule
+import com.example.filma.search.di.searchModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -21,7 +22,7 @@ class App : Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@App)
-            modules(appModule, mainModule, detailsModule)
+            modules(appModule, mainModule, detailsModule, searchModule)
         }
     }
 

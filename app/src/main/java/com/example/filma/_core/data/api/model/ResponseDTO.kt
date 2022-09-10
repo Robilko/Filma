@@ -23,7 +23,7 @@ data class MovieFromListDTO(
     @SerializedName("logo")
     val logo: LogoDTO,
     @SerializedName("poster")
-    val poster: PosterDTO,
+    val poster: PosterDTO?,
     @SerializedName("rating")
     val rating: RatingDTO,
     @SerializedName("votes")
@@ -87,9 +87,9 @@ data class PosterDTO(
     @SerializedName("_id")
     val id: String,
     @SerializedName("url")
-    val url: String,
+    val url: String?,
     @SerializedName("previewUrl")
-    val previewUrl: String
+    val previewUrl: String?
 )
 
 data class LogoDTO(

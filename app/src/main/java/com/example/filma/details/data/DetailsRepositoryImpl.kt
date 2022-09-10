@@ -16,13 +16,16 @@ class DetailsRepositoryImpl(private val apiService: ApiService) : DetailsReposit
             val response = withContext(Dispatchers.IO) {
                 apiService.getMovieDetails(id = movieId)
             }
-            Log.d(TAG, "getMovieDetails() called with: movieId = $movieId, response = \n $response")
-
             Result.success(value = response)
 
         } catch (ex: HttpException) {
-            Result.failure(exception = ex)
+            Log.d(TAG, "${ex.response()?.code()})")
+            if (ex.response()?.code() == 403)
+                Result.failure(Throwable(message = "Вы сделали более 200 запросов за сутки"))
+            else
+                Result.failure(exception = ex)
         } catch (ex: IOException) {
+            Log.d(TAG, "${ex.message}")
             Result.failure(exception = ex)
         }
     }
