@@ -65,13 +65,15 @@ class MainFragment : Fragment() {
     private fun setupView() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
+                movieListAdapter.addLoadStateListener {
+                    renderState(it.refresh)
+                }
+
                 viewModel.items.collect {
                     movieListAdapter.submitData(it)
                 }
 
-                movieListAdapter.addLoadStateListener {
-                    renderState(it.refresh)
-                }
+
             }
         }
 
