@@ -41,8 +41,8 @@
         android:id="@+id/details_movie_year_content"
         style="@style/DetailsMovieParametersStyle.Content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/details_movie_image"
-        app:layout_constraintTop_toBottomOf="@id/details_movie_year_header"
+        app:layout_constraintStart_toEndOf="@+id/details_movie_year_header"
+        app:layout_constraintTop_toBottomOf="@id/details_title"
         tools:text="@string/example_movie_year" />
 
     <TextView
@@ -56,8 +56,8 @@
         android:id="@+id/details_movie_type_content"
         style="@style/DetailsMovieParametersStyle.Content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/details_movie_image"
-        app:layout_constraintTop_toBottomOf="@id/details_movie_type_header"
+        app:layout_constraintStart_toEndOf="@+id/details_movie_type_header"
+        app:layout_constraintTop_toBottomOf="@id/details_movie_year_content"
         tools:text="@string/example_movie_type" />
 
     <TextView

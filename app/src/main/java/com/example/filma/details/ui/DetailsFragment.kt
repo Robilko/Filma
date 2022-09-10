@@ -89,10 +89,10 @@ class DetailsFragment : Fragment() {
                 .placeholder(R.drawable.ic_movie_default_image)
                 .into(detailsMovieImage)
             detailsTitle.text = data.name
-            detailsMovieYearContent.text = data.year.toString()
+            detailsMovieYearContent.text = data.year
             detailsMovieTypeContent.text = data.type
-            detailsMovieGenreContent.text = data.genres.toString()
-            detailsMovieCountryContent.text = data.countries.toString()
+            detailsMovieGenreContent.text = data.genres
+            detailsMovieCountryContent.text = data.countries
             detailsMovieRuntimeContent.text = data.movieLength
             detailsImdbRatingContent.text = data.imDbRating
             detailsKinopoiskRatingContent.text = data.kinopoiskRating

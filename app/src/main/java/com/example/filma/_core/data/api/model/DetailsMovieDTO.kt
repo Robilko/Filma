@@ -68,9 +68,9 @@ data class FactDTO(
 
 data class VideoDTO(
     @SerializedName("trailers")
-    val trailers: List<TrailerDTO>,
+    val trailers: List<TrailerDTO>?,
     @SerializedName("teasers")
-    val teasers: List<String>
+    val teasers: List<String>?
 )
 
 data class TrailerDTO(

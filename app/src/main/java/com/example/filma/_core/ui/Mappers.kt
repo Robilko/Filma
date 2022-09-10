@@ -37,15 +37,15 @@ object MapperDetailsMovieDtoToUi {
             name = detailsMovie.name.orEmpty(),
             description = detailsMovie.description.orEmpty(),
             slogan = detailsMovie.slogan.orEmpty(),
-            year = detailsMovie.year,
+            year = detailsMovie.year.toString(),
             posterUrl = detailsMovie.poster.previewUrl,
             kinopoiskRating = getVerifiedRating(detailsMovie.rating.kp),
             imDbRating = getVerifiedRating(detailsMovie.rating.imdb),
-            videoTrailerUrl = detailsMovie.videos.trailers[0].url,
-            movieLength = detailsMovie.movieLength.minutes.toString(),
+            videoTrailerUrl = detailsMovie.videos.trailers?.firstOrNull()?.url,
+            movieLength = getFormattedMovieLength(detailsMovie.movieLength),
             facts = detailsMovie.facts.map { it.value }.toList(),
-            genres = detailsMovie.genres.map { it.name }.toList(),
-            countries = detailsMovie.countries.map { it.name }.toList(),
+            genres = detailsMovie.genres.map { it.name }.toString().removeSurrounding("[", "]"),
+            countries = detailsMovie.countries.map { it.name }.toString().removeSurrounding("[", "]"),
             directors = MapperPersonDTOToUi(detailsMovie.persons, PERSON_PROFESSION_DIRECTOR),
             actors = MapperPersonDTOToUi(detailsMovie.persons, PERSON_PROFESSION_ACTOR)
         )
@@ -57,7 +57,7 @@ object MapperPersonDTOToUi {
         val persons = list.map { personDTO ->
             Person(
                 id = personDTO.id,
-                name = personDTO.name ?: personDTO.enName.orEmpty(),
+                name = if (personDTO.name.isNullOrEmpty()) personDTO.enName.orEmpty() else personDTO.name,
                 enName = personDTO.enName.orEmpty(),
                 photoUrl = personDTO.photoUrl,
                 enProfession = personDTO.enProfession,
@@ -70,3 +70,5 @@ object MapperPersonDTOToUi {
 }
 
 private fun getVerifiedRating(rating: Double): String = if (rating == 0.0) "-" else rating.toString()
+
+private fun getFormattedMovieLength(length: Int): String = if (length == 0) "-" else length.minutes.toString().replace('h', 'ч').replace('m', 'м')

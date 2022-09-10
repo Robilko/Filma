@@ -27,6 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:lines="2"
+        android:maxLines="2"
         android:textStyle="bold"
         tools:text="@string/example_actor_text" />
 
@@ -43,6 +45,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:lines="2"
+        android:maxLines="2"
         tools:text="@string/example_character_text" />
 
 </LinearLayout>
