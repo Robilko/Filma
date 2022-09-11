@@ -22,4 +22,21 @@
     <style name="Theme.Filma.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Filma.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="DetailsMovieParametersStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginHorizontal">@dimen/margin_8</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="DetailsMovieParametersStyle.Header">
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="DetailsMovieParametersStyle.Content">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textColor">@color/details_parameters_text_color</item>
+        <item name="layout_constraintHorizontal_bias">0.0</item>
+    </style>
 </resources>

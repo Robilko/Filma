@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".details.ui.DetailsFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/details_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_8">
+
+            <include
+                android:id="@+id/movie_parameters_layout"
+                layout="@layout/movie_parameters_layout" />
+
+            <include
+                android:id="@+id/plot_layout"
+                layout="@layout/movie_plot_layout" />
+
+            <include
+                android:id="@+id/actors_layout"
+                layout="@layout/movie_actors_layout" />
+
+            <include
+                android:id="@+id/directors_layout"
+                layout="@layout/movie_directors_layout" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/details_fragment_empty_data"
+        android:layout_width="@dimen/empty_data_image_size"
+        android:layout_height="@dimen/empty_data_image_size"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_empty_data"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+</FrameLayout>

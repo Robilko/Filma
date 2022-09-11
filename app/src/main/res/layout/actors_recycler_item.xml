@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/actor_image_width"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_4"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/actor_image"
+            android:layout_width="@dimen/actor_image_width"
+            android:layout_height="@dimen/actor_image_height"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_actor_no_image"
+            tools:src="@drawable/example_actor_image" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/actor_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lines="2"
+        android:maxLines="2"
+        android:textStyle="bold"
+        tools:text="@string/example_actor_text" />
+
+    <TextView
+        android:id="@+id/role"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/asCharacter"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/asCharacter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lines="2"
+        android:maxLines="2"
+        tools:text="@string/example_character_text" />
+
+</LinearLayout>
