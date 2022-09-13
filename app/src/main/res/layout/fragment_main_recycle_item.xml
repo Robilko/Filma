@@ -70,7 +70,7 @@
             android:textSize="@dimen/recycler_item_imdbRating_text_size"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/movie_alternative_title"
             tools:text="@string/example_rating" />
 
         <TextView

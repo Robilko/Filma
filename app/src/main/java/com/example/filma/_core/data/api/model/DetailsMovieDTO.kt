@@ -19,7 +19,7 @@ data class DetailsMovieDTO(
     @SerializedName("year")
     val year: Int,
     @SerializedName("poster")
-    val poster: DetailsMoviePosterDTO,
+    val poster: DetailsMoviePosterDTO?,
     @SerializedName("rating")
     val rating: DetailsMovieRatingDTO,
     @SerializedName("videos")
@@ -101,9 +101,9 @@ data class DetailsMovieRatingDTO(
 
 data class DetailsMoviePosterDTO(
     @SerializedName("url")
-    val url: String,
+    val url: String?,
     @SerializedName("previewUrl")
-    val previewUrl: String
+    val previewUrl: String?
 )
 
 data class DetailsMovieExternalIdDTO(

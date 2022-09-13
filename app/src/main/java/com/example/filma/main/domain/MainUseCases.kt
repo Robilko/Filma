@@ -8,7 +8,7 @@ class MainUseCases(private val repository: MainRepository) {
     suspend fun getMovieList(pageNumber: Int): Result<List<Movie>> {
         val result = repository.getNewReleasesMovieList(pageNumber)
         return result.map { responseDTO ->
-            MapperMovieDtoToUi(responseDTO.movieList)
+            MapperMovieDtoToUi(responseDTO.movieList!!)
         }
     }
 }

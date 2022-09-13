@@ -38,7 +38,7 @@ object MapperDetailsMovieDtoToUi {
             description = detailsMovie.description.orEmpty(),
             slogan = detailsMovie.slogan.orEmpty(),
             year = detailsMovie.year.toString(),
-            posterUrl = detailsMovie.poster.previewUrl,
+            posterUrl = detailsMovie.poster?.let { it.previewUrl ?: it.url },
             kinopoiskRating = getVerifiedRating(detailsMovie.rating.kp),
             imDbRating = getVerifiedRating(detailsMovie.rating.imdb),
             videoTrailerUrl = detailsMovie.videos.trailers?.firstOrNull()?.url,
@@ -69,6 +69,6 @@ object MapperPersonDTOToUi {
     }
 }
 
-private fun getVerifiedRating(rating: Double): String = if (rating == 0.0) "-" else rating.toString()
+private fun getVerifiedRating(rating: Double): String = if (rating == 0.0) " -   " else rating.toString()
 
-private fun getFormattedMovieLength(length: Int): String = if (length == 0) "-" else length.minutes.toString().replace('h', 'ч').replace('m', 'м')
+private fun getFormattedMovieLength(length: Int): String = if (length == 0) " - " else length.minutes.toString().replace('h', 'ч').replace('m', 'м')
