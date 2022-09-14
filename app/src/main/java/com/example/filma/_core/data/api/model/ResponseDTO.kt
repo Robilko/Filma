@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ResponseDTO(
     @SerializedName("docs")
-    val movieList: List<MovieFromListDTO>,
+    val movieList: List<MovieFromListDTO>?,
     @SerializedName("total")
     val total: Int,
     @SerializedName("limit")

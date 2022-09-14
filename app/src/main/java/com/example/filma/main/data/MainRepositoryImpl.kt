@@ -15,18 +15,22 @@ class MainRepositoryImpl(
 ) : MainRepository {
     override suspend fun getNewReleasesMovieList(pageNumber: Int): Result<ResponseDTO> {
         return try {
+            Log.d(TAG, "MainRepositoryImpl getNewReleasesMovieList() called with: pageNumber = $pageNumber \n")
             val response =
                 withContext(Dispatchers.IO) { apiService.getNewReleasesMovieList(pageNumber = pageNumber) }
 
-            if (response.errorMessage.isNullOrEmpty()) {
+            if (response.movieList != null) {
+                Log.d(TAG, "result of request: \n ${response.movieList} \n \n")
                 Result.success(value = response)
             } else {
-                Result.failure(exception = Throwable(message = "${response.errorMessage}"))
+                Log.d(TAG, "result of request: \n ${response.errorMessage} \n")
+                Result.failure(IOException("Нет элементов"))
             }
         } catch (ex: HttpException) {
+            Log.d(TAG, "MainRepositoryImpl HTTP EXCEPTION - ${ex.code()} \n ${ex.message()}")
             Result.failure(exception = ex)
         } catch (ex: IOException) {
-            Log.d(TAG, "${ex.message}")
+            Log.d(TAG, "MainRepositoryImpl EXCEPTION - ${ex.message}")
             Result.failure(exception = ex)
         }
     }

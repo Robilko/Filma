@@ -8,7 +8,7 @@ data class DetailsMovie(
     val description: String,
     val slogan: String,
     val year: String,
-    val posterUrl: String,
+    val posterUrl: String?,
     val kinopoiskRating: String,
     val imDbRating: String,
     val videoTrailerUrl: String?,

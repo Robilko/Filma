@@ -13,6 +13,7 @@ import java.io.IOException
 class SearchRepositoryImpl(private val apiService: ApiService) : SearchRepository {
     override suspend fun getMovieListByName(name: String, pageNumber: Int): Result<ResponseDTO> {
         return try {
+            Log.d(TAG, "SearchRepositoryImpl getMovieListByName() called with: name = $name, pageNumber = $pageNumber \n")
             val response = withContext(Dispatchers.IO) {
                 apiService.getMovieListSearchedByName(
                     name = name,
@@ -20,11 +21,18 @@ class SearchRepositoryImpl(private val apiService: ApiService) : SearchRepositor
                 )
             }
 
-            Result.success(value = response)
+            Log.d(TAG, "result of request: \n ${response.movieList} \n ${response.errorMessage}\n ${response.total} \n\n")
+            if (response.movieList != null) {
+                Result.success(value = response)
+            } else {
+                Result.failure(IOException("Нет элементов"))
+            }
+
         } catch (ex: HttpException) {
+            Log.d(TAG, "SearchRepositoryImpl HTTP EXCEPTION - ${ex.code()} \n ${ex.message()}")
             Result.failure(exception = ex)
         } catch (ex: IOException) {
-            Log.d(TAG, "${ex.message}")
+            Log.d(TAG, "SearchRepositoryImpl EXCEPTION - ${ex.message}")
             Result.failure(exception = ex)
         }
     }

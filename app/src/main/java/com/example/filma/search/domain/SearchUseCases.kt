@@ -7,7 +7,7 @@ class SearchUseCases(private val repository: SearchRepository) {
     suspend fun getMovieList(name: String, pageNumber: Int): Result<List<Movie>> {
         val result = repository.getMovieListByName(name = name, pageNumber = pageNumber)
         return result.map { responseDTO ->
-            MapperMovieDtoToUi(responseDTO.movieList)
+            MapperMovieDtoToUi(responseDTO.movieList!!)
         }
     }
 }
