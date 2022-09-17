@@ -23,11 +23,11 @@ data class DetailsMovieDTO(
     @SerializedName("rating")
     val rating: DetailsMovieRatingDTO,
     @SerializedName("videos")
-    val videos: VideoDTO,
+    val videos: VideoDTO?,
     @SerializedName("movieLength")
     val movieLength: Int,
     @SerializedName("facts")
-    val facts: List<FactDTO>,
+    val facts: List<FactDTO>?,
     @SerializedName("genres")
     val genres: List<GenreDTO>,
     @SerializedName("countries")

@@ -105,7 +105,6 @@ class DetailsFragment : Fragment() {
         directorsListAdapter.submitList(data.directors)
 
         actorListAdapter.submitList(data.actors)
-
     }
 
     private fun showToastMessage(message: String) {

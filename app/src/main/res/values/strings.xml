@@ -29,7 +29,7 @@
     <string name="example_movie_plot">A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.</string>
     <string name="movie_actors_header_text">Актеры:</string>
     <string name="example_actor_text">Michael Caine</string>
-    <string name="asCharacter">играет</string>
+    <string name="asCharacter">в роли</string>
     <string name="example_character_text">Miles</string>
     <string name="movie_directors_header_text">Режиссеры:</string>
     <string name="example_movie_director">Christopher Nolan</string>

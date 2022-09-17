@@ -13,7 +13,7 @@ data class DetailsMovie(
     val imDbRating: String,
     val videoTrailerUrl: String?,
     val movieLength: String,
-    val facts: List<String>,
+    val facts: List<String>?,
     val genres: String,
     val countries: String,
     val directors: List<Person>,
