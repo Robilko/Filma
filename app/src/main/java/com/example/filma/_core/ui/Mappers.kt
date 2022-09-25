@@ -69,6 +69,6 @@ object MapperPersonDTOToUi {
     }
 }
 
-private fun getVerifiedRating(rating: Double): String = if (rating == 0.0) " -   " else rating.toString()
+private fun getVerifiedRating(rating: Double): String = if (rating == 0.0) " -   " else String.format("%.1f", rating)
 
 private fun getFormattedMovieLength(length: Int): String = if (length == 0) " - " else length.minutes.toString().replace('h', 'ч').replace('m', 'м')
