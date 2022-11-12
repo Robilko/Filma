@@ -11,8 +11,9 @@ https://user-images.githubusercontent.com/75025794/189520184-d0f91178-cec8-4850-
 Использовались следующие архитектурные подходы и библиотеки:
 
 - MVVM
-- Navigation component
+- Jetpack Navigation component
 - Koin
 - Retrofit 2
 - Coroutines
-- Paging 3
+- Paging 3  
+- Glide
